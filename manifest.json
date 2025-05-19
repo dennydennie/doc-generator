@@ -1,0 +1,10 @@
+{
+	"id": "automated-doc-gen",
+	"name": "Automated Documentation Generator",
+	"version": "1.0.0",
+	"minAppVersion": "0.12.0",
+	"description": "Automatically generates documentation from your codebase.",
+	"author": "Dennis",
+	"authorUrl": "https://github.com/your-profile",
+	"isDesktopOnly": false
+  }
