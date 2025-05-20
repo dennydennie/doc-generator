@@ -35,7 +35,7 @@ export default class YouTrackIssuePlugin extends Plugin {
 				}
 				let content = await this.app.vault.read(file)
 				const lines = content.split("\n")
-				const issueRegex = /#(\d+-\d+)/g
+				const issueRegex = /#([A-Z]+-\d+)/g
 				let match: RegExpExecArray | null
 				let modified = false
 
@@ -80,7 +80,7 @@ export default class YouTrackIssuePlugin extends Plugin {
 			return null
 		}
 
-		const url = `https://${this.settings.youtrackHost}/api/issues/${issueId}?fields=id,summary`
+		const url = `https://${this.settings.youtrackHost}/api/issues/${issueId}?fields=idReadable,summary`
 		try {
 			const response = await fetch(url, {
 				method: 'GET',
@@ -123,18 +123,18 @@ export default class YouTrackIssuePlugin extends Plugin {
 
 	async createSampleNote() {
 		const sampleIssues = [
-			"#2-660",
-			"#2-645",
-			"#2-449",
-			"#2-494",
-			"#2-662",
-			"#2-663",
-			"#2-521",
-			"#2-665",
-			"#2-666",
-			"#2-667",
-			"#2-668",
-			"#2-669"
+			"#EP-38",
+			"#EP-39",
+			"#EP-40",
+			"#EP-41",
+			"#EP-42",
+			"#EP-43",
+			"#EP-44",
+			"#SP-45",
+			"#SP-46",
+			"#SP-47",
+			"#SP-48",
+			"#SP-49"
 		]
 
 		const sampleContent = `
@@ -143,7 +143,7 @@ This is a sample note with YouTrack issues. You can use the "Fetch YouTrack Issu
 ${sampleIssues.join("\n")}
 
 ## How to use
-1. Tag any YouTrack issue in your notes using the format #XXX-XXX where XXX is the project number and XXX is the issue number
+1. Tag any YouTrack issue in your notes using the format #XXX-XXX where XXX is the project key and XXX is the issue number
 2. Run the "Fetch YouTrack Issue Details" command
 3. The plugin will fetch and display the issue titles below each issue ID
 `
